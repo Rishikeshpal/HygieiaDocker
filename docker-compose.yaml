@@ -1,0 +1,49 @@
+# BUILD/RUN COMMAND : docker-compose rm -f & docker-compose up --build
+# SHELL COMMAND (root) : docker exec -u root -ti <stack> bash
+
+version: '3'
+services:
+      
+  hygieia-ui:
+    image: "capitalone/hygieia-ui:latest"
+    ports:
+      - "8088:80"   
+    container_name: hygieia-ui
+    depends_on: 
+      - hygieia-api
+
+  hygieia-github:
+    build:
+      context: .
+      dockerfile: hygieia-bitbucket.dockerfile  
+    container_name: hygieia-bitbucket 
+    environment:
+      #MONGO_HOST: mongodb
+      MONGO_PORT: 27017
+    depends_on: 
+      - hygieia-api
+
+  hygieia-api:
+    image: "capitalone/hygieia-api:latest"
+    ports:
+      - "8080:8080"
+    container_name: hygieia-api
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongodb
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: dashboarddb
+      SPRING_DATA_MONGODB_USERNAME: dashboarduser
+      SPRING_DATA_MONGODB_PASSWORD: password
+    volumes:
+      - C:\Users\sguclu\Desktop\Hygieia\volumes\api\logs:/hygieia/logs
+    depends_on: 
+      - hygieia-mongodb      
+ 
+  hygieia-mongodb:
+    build:
+      context: .
+      dockerfile: hygieia-mongodb.dockerfile
+    ports:
+      - "27017:27017"
+    container_name: mongodb
+    command: --smallfiles
