@@ -14,5 +14,7 @@ output "Hygieiadev_elb" {
   value = "${aws_elb.Hygieiadev.dns_name}"
 }
 
-output "Hygieiadev
+output "Hygieiadev_DNS" {
+  value = "${aws_route53_record.www.fqdn}"
+}
 
