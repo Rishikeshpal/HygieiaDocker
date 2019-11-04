@@ -10,4 +10,9 @@ output "Hygieiadevamfam_public_dns" {
   value = "${aws_instance.Hygieiadevamfam.public_dns}"
 }
 
-output "Hygieiadev_
+output "Hygieiadev_elb" {
+  value = "${aws_elb.Hygieiadev.dns_name}"
+}
+
+output "Hygieiadev
+
