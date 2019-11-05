@@ -12,11 +12,22 @@ services:
     depends_on: 
       - hygieia-api
 
-  hygieia-github:
+  hygieia-bitbucket:
     build:
       context: .
       dockerfile: hygieia-bitbucket.dockerfile  
     container_name: hygieia-bitbucket 
+    environment:
+      #MONGO_HOST: mongodb
+      MONGO_PORT: 27017
+    depends_on: 
+      - hygieia-api
+     
+  hygieia-jenkins:
+    build:
+      context: .
+      dockerfile: hygieia-jenkins.dockerfile  
+    container_name: hygieia-jenkins 
     environment:
       #MONGO_HOST: mongodb
       MONGO_PORT: 27017
