@@ -25,6 +25,7 @@ if which node > /dev/null
 
 echo `node -v`
 echo `npm -v`
+fi
 
 
 ### Maven installation
@@ -41,6 +42,7 @@ if which mvn > /dev/null
 ### verify the mvn installation
 
 echo `mvn -v`
+fi
 
 ### Add the below repo file to install latest Mongodb version.
 cat <<EOF>> /etc/yum.repos.d/mongodb-org.repo
@@ -88,6 +90,7 @@ if which bower > /dev/null
   else
     npm install bower -g
     npm install gulp -g
+fi
 
 
 
