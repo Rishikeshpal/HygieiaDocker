@@ -40,7 +40,7 @@ resource "aws_security_group" "HygieiadevSG" {
 #Amazon linux2 machine
 #------------------------------------------------
 
-resource "aws_instance" "Hygieiadevamfam" {
+resource "aws_instance" "Hygieiadev" {
   ami = "${var.ami}"
   availability_zone = "${var.availability_zone.primary}"
   instance_type = "${var.instance_type}"
@@ -71,7 +71,7 @@ resource "aws_elb" "Hygieiadev" {
     target = "HTTP:80/"
     interval = 30
   }
-  instances = ["${aws_instance.Hygieiadevamfam.id}"]
+  instances = ["${aws_instance.Hygieiadev.id}"]
 }
 
 
