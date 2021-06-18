@@ -3,11 +3,11 @@ output "HygieiadevSG_id" {
 }
 
 output "Hygieiadevamfam_public_ip" {
-  value = "${aws_instance.Hygieiadevamfam.public_ip}"
+  value = "${aws_instance.Hygieiadev.public_ip}"
 }
 
 output "Hygieiadevamfam_public_dns" {
-  value = "${aws_instance.Hygieiadevamfam.public_dns}"
+  value = "${aws_instance.Hygieiadev.public_dns}"
 }
 
 output "Hygieiadev_elb" {
